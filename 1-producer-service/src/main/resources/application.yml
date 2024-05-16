@@ -1,0 +1,43 @@
+server:
+  port: 7100
+  servlet.context-path: /micrometer
+  tomcat.basedir: "tmp"
+
+spring:
+  application.name: 1-producer-service
+  kafka.bootstrap-servers: 127.0.0.1:19090,127.0.0.1:19091,127.0.0.1:19092,127.0.0.1:19093
+
+topic:
+  scenarios:
+    -
+      scenario:
+        -
+          name: SPRING_BOOT_MICROMETER_TOPIC_CASE_1_1
+          consumer-group: spring_boot_micrometer_consumer_group_case_1_1
+    -
+      scenario:
+        - name: SPRING_BOOT_MICROMETER_TOPIC_CASE_2_1
+          consumer-group: spring_boot_micrometer_consumer_group_case_2_1
+        - name: SPRING_BOOT_MICROMETER_TOPIC_CASE_2_2
+          consumer-group: spring_boot_micrometer_consumer_group_case_2_2
+    -
+      scenario:
+        -
+          name: SPRING_BOOT_MICROMETER_TOPIC_CASE_3_1
+          consumer-group: spring_boot_micrometer_consumer_group_case_3_1
+    -
+      scenario:
+        -
+          name: SPRING_BOOT_MICROMETER_TOPIC_CASE_4_1
+          consumer-group: spring_boot_micrometer_consumer_group_case_4_1
+
+# management and tracing configuration
+management:
+  endpoints.web.exposure.include: info,health,metrics,prometheus
+  tracing.sampling.probability: 1.0
+  metrics.distribution:
+      percentiles-histogram:
+        fetch-commit: true
+        http.server.requests: true
+  otlp.tracing.endpoint: http://localhost:14318/v1/traces
+  appoptics.metrics.export.enabled: false
