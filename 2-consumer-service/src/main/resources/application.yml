@@ -47,6 +47,6 @@ management:
     percentiles-histogram:
       fetch-commit: true
       http.server.requests: true
-  otlp.tracing.endpoint: http://localhost:14318/v1/traces
+  otlp.tracing.endpoint: http://localhost:4318/v1/traces
   appoptics.metrics.export.enabled: false
 

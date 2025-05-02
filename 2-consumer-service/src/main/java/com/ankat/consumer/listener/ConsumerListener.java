@@ -1,6 +1,5 @@
 package com.ankat.consumer.listener;
 
-import ch.qos.logback.core.testUtil.RandomUtil;
 import com.ankat.consumer.entity.Trace;
 import com.ankat.consumer.model.Employee;
 import com.ankat.consumer.repository.CommitRepository;
@@ -24,8 +23,6 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Random;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
